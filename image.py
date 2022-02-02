@@ -1,6 +1,7 @@
-import skimage.io as skio
-import skimage as sk
 import numpy as np
+import skimage as sk
+import skimage.io as skio
+
 from filter import gaussian_filter
 
 
