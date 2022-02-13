@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": ["--path1", "./images/palace-now.png", "--path2", "images/palace-then.png", "--frequency", "True"]
+        }
+    ]
+}

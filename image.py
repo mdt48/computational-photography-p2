@@ -8,6 +8,11 @@ from filter import gaussian_filter
 class Image:
     def __init__(self, path) -> None:
         self.image = sk.img_as_float32(skio.imread(path))
+        self.gray = sk.color.rgb2gray(self.image)
+        # print(self.image.shape[2])
+        if self.image.shape[2] == 4:
+            # print('here')
+            self.image = self.image[:, :, :3]
 
     def apply_filter(self, filter_type, filter_size, sigmax, sigmay, frequency='low'):
         if filter_type == 'gaussian':

@@ -1,7 +1,6 @@
 import cv2
 import numpy as np
 import skimage as sk
-from sklearn.preprocessing import normalize
 
 from filter import gaussian_filter
 
@@ -39,13 +38,6 @@ def sse(i1, i2):
     return np.sum(np.square(i2 - i1))
 
 
-def ncc(i1, i2):
-    ni1 = sk.img_as_uint(normalize(i1))
-    ni2 = sk.img_as_uint(normalize(i2))
-
-    return np.sum(np.dot(ni1, ni2))
-
-
 def align(img1, img2, displacement_size, freeze_x=False, freeze_y=False):
     sses = []
     displacements = []
@@ -58,7 +50,6 @@ def align(img1, img2, displacement_size, freeze_x=False, freeze_y=False):
             displaced_i2 = np.roll(img2, (x, y), axis=(1, 0))
 
             sses.append(sse(img1, displaced_i2))
-            # sses.append(ncc(img1, displaced_i2))
             displacements.append((x, y))
 
     best_idx = np.argmin(sses)
